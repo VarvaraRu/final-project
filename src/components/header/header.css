@@ -1,0 +1,7 @@
+.header {
+    background: linear-gradient(to bottom right, pink, rgb(167, 114, 213));  
+    height: 10vh;
+    align-items: center;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+body {
+  max-width: 1440px; 
+  margin: 0 auto; 
+}
+
+ol, ul {
+  list-style: none;
+  padding: 0; 
+  }
+
+a {
+  text-decoration: none;
+  color: rgb(93, 21, 74);
+}
+
+a {
+  text-decoration: none;
+}

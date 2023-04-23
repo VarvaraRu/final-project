@@ -1,0 +1,24 @@
+.main-part {
+    background-color: white;
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.main_image {
+    height: 500px;
+    height: 500px;
+}
+.short_description {
+    font-size: 40px; 
+    color: rgb(93, 21, 74); 
+    width: 500px;
+    font-weight: bold;
+}
+.long_description {
+    margin-top: 20px;
+    font-size: 25px; 
+    color: rgb(93, 21, 74); 
+    width: 400px;
+    font-weight:300;
+}

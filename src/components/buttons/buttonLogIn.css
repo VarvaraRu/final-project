@@ -1,0 +1,18 @@
+.button_log_in {
+    margin-left: 90%;
+    width: 100px;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    border: none;
+    font-size: 20px;
+  }
+
+  .button_log_in:hover {
+    background-color: rgba(0,0,0,0.2);
+  }

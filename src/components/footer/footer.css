@@ -1,0 +1,19 @@
+.footer {
+    background: linear-gradient(to bottom right, rgb(167, 114, 213), pink); 
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgb(93, 21, 74);
+}
+
+.ref_for_img {
+    margin-left: 85%;
+    max-width: 150px;
+    font-size: 12px;
+    text-align: end;
+}
+
+.ref_for_img a {
+    font-size: 12px;
+}
