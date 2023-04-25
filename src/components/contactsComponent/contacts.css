@@ -1,0 +1,43 @@
+.contacts {
+    height: 80vh;
+}
+
+h1 {
+    font-size: 25px;
+    color: rgb(93, 21, 74); 
+    text-align: center;
+    padding-top: 30px;
+}
+
+.block {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+   
+}
+.block_item {
+    height: 200px;
+    width: 350px;
+    background: linear-gradient(to bottom right, rgb(224, 139, 233), rgb(255, 255, 255));  
+    border-radius: 20px;
+    color:rgb(93, 21, 74); 
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.block_item:hover {
+    background: #fcce92;
+    box-shadow: 0 0 0 32px #fcce92;
+}
+
+.tel {
+    padding-top: 15px;
+}
+
+.email {
+    padding-top: 15px;
+}

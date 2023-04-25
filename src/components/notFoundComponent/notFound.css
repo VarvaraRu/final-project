@@ -1,0 +1,16 @@
+.not_found_page {
+    text-align: center;
+    height: 80vh;
+}
+
+.not_found_text {
+    color: rgb(93, 21, 74);
+    font-size: 18px; 
+    padding-top: 60px;
+}
+
+.not_found_image {
+    padding-top: 20px;
+    height: 500px;
+    width: 500px;
+}
