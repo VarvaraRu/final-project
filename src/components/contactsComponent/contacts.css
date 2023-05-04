@@ -4,7 +4,6 @@
 
 h1 {
     font-size: 25px;
-    color: rgb(93, 21, 74); 
     text-align: center;
     padding-top: 30px;
 }
@@ -18,9 +17,8 @@ h1 {
 .block_item {
     height: 200px;
     width: 350px;
-    background: linear-gradient(to bottom right, rgb(224, 139, 233), rgb(255, 255, 255));  
+    background: linear-gradient(to bottom right, rgb(61, 161, 149), rgb(255, 255, 255));  
     border-radius: 20px;
-    color:rgb(93, 21, 74); 
     padding: 15px 15px;
     display: flex;
     flex-direction: column;
@@ -30,8 +28,7 @@ h1 {
 }
 
 .block_item:hover {
-    background: #fcce92;
-    box-shadow: 0 0 0 32px #fcce92;
+    box-shadow: 25px 25px 2px 1px rgba(137, 231, 220, 0.5);
 }
 
 .tel {

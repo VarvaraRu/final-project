@@ -1,10 +1,9 @@
 .footer {
-    background: linear-gradient(to bottom right, rgb(167, 114, 213), pink, #e5b371); 
+    background: linear-gradient(to bottom right, #8dfee2, rgb(6, 58, 122));
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    color: rgb(93, 21, 74);
 }
 
 .references {
@@ -12,10 +11,12 @@
     max-width: 300px;
     font-size: 10px;
     text-align: end;
+    color: white; 
 }
 
 .references a {
     font-size: 12px;
+    color: white; 
 }
 
 .logo {

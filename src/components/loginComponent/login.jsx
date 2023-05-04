@@ -1,4 +1,6 @@
 import './login.css'; 
+import { ButtonInLoginForm } from '../buttons/buttonInLoginForm';
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
     return (
@@ -13,6 +15,8 @@ export const Login = () => {
                     type='password'
                     placeholder='введите пароль'
                     ></input>
+                    <ButtonInLoginForm/>
+                    <p className='text_with_link'>Нет аккаунта? <Link to='/register'>Создать</Link></p>
             </div>
         </div>
     )
