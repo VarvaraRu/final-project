@@ -1,4 +1,41 @@
 .wrapper_for_report_form {
-    height: 80vh;   
+    height: 75vh;       
 }
 
+.report_form {
+    width: 900px;
+    height: 580px;
+    margin: 0 auto;
+    margin-top: 45px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 4px rgba(12, 39, 66, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label_in_report_form {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.input_in_report_form {
+    border: 2px solid rgba(13, 62, 114, 0.2);
+    border-radius: 5px; 
+    margin-left: 15px;
+    width: 300px;
+}
+
+.comment_in_report_form {
+    border: 2px solid rgba(13, 62, 114, 0.2);
+    border-radius: 5px; 
+    margin-left: 15px;
+}
+
+.select_report {
+    margin-left: 15px;
+    width:200px;
+    border: 1px solid rgba(13, 62, 114, 0.2);
+    border-radius: 5px;
+}

@@ -1,8 +1,8 @@
-.button_for_report {
-    margin-top: 40px;
+.button_submit_form {
     background-color:rgb(6, 58, 122);
-    width: 250px;
-    height: 50px;
+    margin-top: 30px;
+    width: 200px;
+    height: 40px;
     border-radius: 10px;
     cursor: pointer;
     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
@@ -11,6 +11,6 @@
     border: none;
 }
 
-.button_for_report:hover{
+.button_submit_form:hover{
     background-color: rgb(2, 26, 56);
 }

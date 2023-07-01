@@ -24,11 +24,7 @@ export const RegisterComponent = () => {
                     type='text'
                     placeholder='введите фамилию'
                 ></input>
-                <input className='input_register'
-                    type='text'
-                    placeholder='clientId'
-                ></input>
-                <label class="checkbox_in_register_form"><input type="checkbox" value="yes" className="checkbox1"></input>Одобрен</label>
+                {/* <label class="checkbox_in_register_form"><input type="checkbox" value="yes" className="checkbox1"></input>Одобрен</label> */}
                 <ButtonInRegisterForm/>
                  <p className='text_with_link'>Есть аккаунт? <Link to='/login'>Войти</Link></p>
             </div>
