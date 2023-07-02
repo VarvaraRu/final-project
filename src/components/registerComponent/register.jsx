@@ -5,8 +5,11 @@ import axios from '../../api/axios';
 
 
 const USER_REGEX = /^[?!,.а-яА-ЯёЁ0-9\s]{2,20}$/; 
-const PWD_REGEX = /^[A-z][A-z0-9-_]{8,20}$/; 
+const PWD_REGEX = /^[A-z][A-z0-9-_]{7,20}$/; 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+
+const REGISTER_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up'
+const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 export const RegisterComponent = () => {
     const userRef = useRef();
@@ -61,8 +64,25 @@ export const RegisterComponent = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user, pwd, lastName, email); 
-        setSuccess(true);
+        try {
+            const response = await axios.post(REGISTER_URL,
+                JSON.stringify({password: pwd, email: email, clientId: clientId}), 
+                {
+                    headers: {"Content-Type": "application/json"}, 
+                } 
+            );
+            console.log(response.data)
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg("Сервер не отвечает")
+            } else if (err.response?.status === 409) {
+                setErrMsg("Адрес данного почтового ящика уже зарегистрирован");
+            } else {
+                setErrMsg("Упс, что-то пошло не так. Попробуйте еще раз")
+            }
+            errRef.current.focus();
+        }
     }
 
     return (

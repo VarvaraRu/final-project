@@ -102,3 +102,10 @@ button:disabled {
     height: 80vh;   
     text-align: center;
 }
+.errmsg{
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
