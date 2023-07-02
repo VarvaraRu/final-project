@@ -1,22 +1,21 @@
 .wrapper_for_register_form {
-    height: 74vh;   
+    height: 78vh;   
 }
 
 .register_form {
     margin: 0 auto;
-    height: 520px;
+    height: 620px;
     width: 450px;
-    margin-top: 50px;
+    margin-top: 20px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 4px rgba(120, 50, 103, 0.2);
-    display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .input_register {
-    margin-top: 20px;
-    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: 35px;
     width: 350px;
     border: 2px solid rgba(13, 62, 114, 0.2);
     border-radius: 5px; 
@@ -51,4 +50,55 @@
     background-position: center;
     margin-bottom: -2px;
     margin-right: 9px;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+.instructions {
+    color: red;
+}
+.hide {
+    display: none;
+}
+
+.label_register_form{
+    font-size: 22px;
+    color: rgb(6, 58, 122);
+    font: bold;
+}
+.button_in_register_form {
+    background-color: rgb(6, 58, 122);
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 55px;
+}
+  
+.button_in_register_form:hover {
+    background-color:rgb(2, 26, 56);
+  }
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit_form {
+    margin-left: 40px;
+}
+.valid {
+    margin-left: 10px;
+}
+
+.invalid {
+    margin-left: 10px;
+}
+.success_submit_form{
+    height: 80vh;   
+    text-align: center;
 }
