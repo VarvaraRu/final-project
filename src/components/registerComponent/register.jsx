@@ -76,8 +76,6 @@ export const RegisterComponent = () => {
         } catch (err) {
             if (!err?.response) {
                 setErrMsg("Сервер не отвечает")
-            } else if (err.response?.status === 409) {
-                setErrMsg("Адрес данного почтового ящика уже зарегистрирован");
             } else {
                 setErrMsg("Упс, что-то пошло не так. Попробуйте еще раз")
             }

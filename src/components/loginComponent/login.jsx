@@ -1,84 +1,139 @@
 import './login.css'; 
-import { ButtonInLoginForm } from '../buttons/buttonInLoginForm';
 import { Link } from 'react-router-dom'
-// import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
+import AuthContext from '../../context/AuthProvider'
+
+import axios from '../../api/axios'
+const LOGIN_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in'
+
+const PWD_REGEX = /^[A-z][A-z0-9-_]{7,20}$/; 
+const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+
 
 export const Login = () => {
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef(); 
+    const errRef = useRef(); 
 
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [emailDirty, setEmailDirty] = useState(false)
-    // const [passwordDirty, setPasswordDirty] = useState(false)
-    // const [emailError, setEmailError] = useState('Пожалуйста, заполните адрес почтовый ящик')
-    // const [passwordError, setPasswordError] = useState('Пожалуйста, заполните пароль')
-    // const [formValid, setFormValid] = useState(false)
+    const [email, setEmail] = useState(''); 
+    const [pwd, setPwd] = useState(''); 
+    const [errMsg, setErrMsg] = useState(''); 
+    const [success, setSuccess] = useState(false);
 
-    // useEffect (() => {
-    //     if (emailError || passwordError) {
-    //         setFormValid(false)
-    //     } else {
-    //         setFormValid(true)
-    //     }
-    // }, [emailError, passwordError])
+    const [validPwd, setValidPwd] = useState(false); 
+    const [pwdFocus, setPwdFocus] = useState(false); 
+    const [validEmail, setValidEmail] = useState(false); 
+    const [emailFocus, setEmailFocus] = useState(false); 
 
-    // const blurHandler = (e) => {
-    //     switch (e.target.name) {
-    //         case 'email' :
-    //             setEmailDirty(true)
-    //             break
-    //         case 'password' :
-    //             setPasswordDirty(true)
-    //             break
-    //     }
-    // }
+    useEffect(() => {
+        userRef.current.focus(); 
+    }, [])
 
-    // const emailHandler = (e) => {
-    //     setEmail(e.target.value)
-    //     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    //     if(!re.test(String(e.target.value).toLowerCase())){
-    //         setEmailError('Некорректно введен адрес почтового ящика')
-    //     } else {
-    //         setEmailError('')
-    //     }
-    // }
+    useEffect(() => {
+        setErrMsg(''); 
+    }, [email, pwd])
 
-    // const passwordHandler = (e) => {
-    //     setPassword(e.target.value)
-    //     if (e.target.value.length < 5 || e.target.value.length > 20) {
-    //         setPasswordError('Пароль должен быть не менее 5, и не более 20 символов')
-    //         if(!e.target.value) {
-    //             setPasswordError('Пароль не может быть пустым')
-    //         }
-    //     } else {
-    //         setPasswordError('')
-    //     }
-    // }
+    useEffect(() => {
+        const result = EMAIL_REGEX.test(email); 
+        setValidEmail(result); 
+    }, [email])
+
+    useEffect(() => {
+        const result = PWD_REGEX.test(pwd); 
+        setValidPwd(result); 
+    }, [pwd])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+        
+        try {
+            const response = await axios.post(LOGIN_URL, 
+                JSON.stringify({password: pwd, email: email}), 
+                {
+                    headers: {'Content-Type': 'application/json'}
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            const token = response?.data?.token
+            const user = response?.data?.user
+            setAuth({email, pwd, token, user});
+            setEmail('');
+            setPwd('');
+            setSuccess(true);
+        } catch (err) {
+            if(!err?.response){
+                setErrMsg('Сервер не отвечает')
+            } else {
+                setErrMsg('Упс, что-то пошло не так. Попробуйте еще раз')
+            }
+            errRef.current.focus();
+        }  
+    }
 
     return (
+        <>
+        {success ? (
+            <div className='success_submit_form'>
+                <h1>Вы успешно вошли в аккаунт</h1>
+                <Link to='/'>Перейти на главную страницу</Link>
+            </div>
+        ) : (
         <div className='wrapper_for_login_form'>
             <div className='login_form'>
+                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
                 <h1>Вход</h1>
-                <input className='input_login'
-                    // value={email}
-                    name='email'
+               <form onSubmit={handleSubmit} className='submit_form'>
+
+                <label htmlFor='email' className='label_in_login'>
+                    Почтовый ящик: 
+                    <span className={validEmail ? "valid" : "hide"}>&#9989;</span>
+                    <span className={validEmail || !email ? "hide" : "invalid"}>&#10060;</span>
+                    <br/> 
+                </label>
+                <input 
+                    className='input_login'
                     type='email'
                     placeholder='введите почтовый ящик'
-                    // onBlur = {e => blurHandler(e)}
-                    // onChange = {e => emailHandler(e)}
+                    id='email'
+                    ref={userRef}
+                    autoComplete='off'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                    onFocus={() => setEmailFocus(true)}
+                    onBlur={() => setEmailFocus(false)}
                     ></input> 
-                    {/* {(emailDirty && emailError) && <div className='vaidation_error'>{emailError}</div>} */}
-                <input className='input_login'
-                    // value={password}
-                    name='password'
+                    <p className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
+                        Некорректно введен адрес почтового ящика
+                    </p>
+                   
+                <label htmlFor='password' className='label_in_login'>
+                    <br/>Пароль:
+                    <span className={validPwd ? "valid" : "hide"}>&#9989;</span>
+                    <span className={validPwd || !pwd ? "hide" : "invalid"}>&#10060;</span>
+                    <br/>
+                </label>
+                <input 
+                    className='input_login'
                     type='password'
                     placeholder='введите пароль'
-                    // onBlur = {e => blurHandler(e)}
-                    // onChange = {e => passwordHandler(e)}
-                    ></input>
-                    {/* {(passwordDirty && passwordError) && <div className='vaidation_error'>{passwordError}</div>} */}
-                    <ButtonInLoginForm/>
+                    id='password'
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                    onFocus={() => setPwdFocus(true)}
+                    onBlur={() => setPwdFocus(false)}
+                    ></input> 
+                    <p className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                        От 8 и до 20 символов.
+                    </p>
+
+                    <button className="button_in_login_form" disabled={!validPwd || !validEmail ? true : false}><span className='text_in_button'>Войти</span></button>
+                    </form>
                     <p className='text_with_link'>Нет аккаунта? <Link to='/register'>Создать</Link></p>
             </div>
         </div>
+        )}
+        </>
     )
 }

@@ -4,19 +4,18 @@
 
 .login_form {
     margin: 0 auto;
-    height: 390px;
+    height: 450px;
     width: 450px;
     margin-top: 50px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 4px rgba(12, 39, 66, 0.2);
-    display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .input_login {
-    margin-top: 25px;
-    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: 35px;
     width: 350px;
     border: 2px solid rgba(13, 62, 114, 0.2);
     border-radius: 5px; 
@@ -30,7 +29,56 @@
     margin: 30px 130px 10px;
 }
 
-.vaidation_error {
-    color: red; 
-    font-size: 16px;
+.button_in_login_form {
+    background-color: rgb(6, 58, 122);
+    margin-top: 40px;
+    border-radius: 5px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 130px;
+}
+  
+.button_in_login_form:hover {
+    background-color: rgb(2, 26, 56);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.label_in_login {
+    margin-top: 5px;
+    font-size: 22px;
+    color: rgb(6, 58, 122);
+    font: bold;
+}
+.success_submit_form{
+    height: 80vh;   
+    text-align: center;
+}
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+.instructions {
+    color: red;
+}
+.hide {
+    display: none;
+}
+.valid {
+    margin-left: 10px;
+}
+.invalid {
+    margin-left: 10px;
+}
+.errmsg{
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
 }
