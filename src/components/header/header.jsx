@@ -7,9 +7,11 @@ export const Header = () => {
         <div className='header'>
             <div className='logo'>-Find your bicycle-</div>
             <ul className='navigation'>
-                <li className='navigation_item'><Link to='/'>Главная</Link></li>
-                <li className='navigation_item'><Link to='/about'>О нас</Link></li>
-                <li className='navigation_item'><Link to='/contacts'>Контакты</Link></li>
+                <li className='navigation_item'><Link to ='/'>Главная</Link></li>
+                <li className='navigation_item'><Link to='about'>О нас</Link></li>
+                <li className='navigation_item'><Link to='contacts'>Контакты</Link></li>
+                <li className='navigation_item'><Link to='account'>Личный кабинет</Link></li>
+                <li className='navigation_item'><Link to='report'>Сообщить о краже</Link></li>
             </ul>
             <ButtonLogIn/>
         </div>

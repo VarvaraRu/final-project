@@ -1,4 +1,4 @@
-import './reportForm.css'
+import './report.css'
 import { ButtonSubmitReport } from '../buttons/buttonSubmitReport'
 import Select from 'react-select'
 
@@ -22,7 +22,7 @@ const colorOptions = [
     {value: 'Розовый', label: 'Розовый'}
 ];
 
-export const ReportForm = () => {
+export const Report = () => {
     return (
         <div className='wrapper_for_report_form'>
             <div className='report_form'>

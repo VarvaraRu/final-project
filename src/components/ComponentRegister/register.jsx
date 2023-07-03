@@ -11,7 +11,7 @@ const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"
 const REGISTER_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up'
 const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
-export const RegisterComponent = () => {
+export const Register = () => {
     const userRef = useRef();
     const errRef = useRef(); 
 

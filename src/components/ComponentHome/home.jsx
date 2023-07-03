@@ -1,7 +1,7 @@
-import './main.css'
+import './home.css'
 import { ButtonReport } from '../buttons/buttonReport'
 
-export const Main = () => {
+export const Home = () => {
     return (
         <div className='main-part'>
             <div className='left_side'>
