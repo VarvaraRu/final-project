@@ -20,14 +20,15 @@ export const Login = () => {
     const userRef = useRef(); 
     const errRef = useRef(); 
 
-    const [email, setEmail] = useState(''); 
-    const [pwd, setPwd] = useState(''); 
-    const [errMsg, setErrMsg] = useState(''); 
-
-    const [validPwd, setValidPwd] = useState(false); 
-    const [pwdFocus, setPwdFocus] = useState(false); 
+    const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false); 
     const [emailFocus, setEmailFocus] = useState(false); 
+    
+    const [pwd, setPwd] = useState(''); 
+    const [validPwd, setValidPwd] = useState(false); 
+    const [pwdFocus, setPwdFocus] = useState(false); 
+
+    const [errMsg, setErrMsg] = useState(''); 
 
     useEffect(() => {
         userRef.current.focus(); 

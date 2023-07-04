@@ -1,12 +1,12 @@
 .wrapper_for_report_form {
-    height: 75vh;       
+    height: 80vh;       
 }
 
 .report_form {
-    width: 900px;
-    height: 580px;
+    width: 1000px;
+    height: 650px;
     margin: 0 auto;
-    margin-top: 45px;
+    margin-top: 5px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 4px rgba(12, 39, 66, 0.2);
     display: flex;
@@ -18,25 +18,50 @@
     margin-top: 25px;
     display: flex;
     align-items: center;
+    font-size: 22px;
+    color: rgb(6, 58, 122);
+    font: bold;
 }
 
 .input_in_report_form {
     border: 2px solid rgba(13, 62, 114, 0.2);
     border-radius: 5px; 
-    margin-left: 15px;
+    margin-left: 50px;
     width: 300px;
-    height: 35px;
+    height: 30px;
 }
 
 .comment_in_report_form {
     border: 2px solid rgba(13, 62, 114, 0.2);
     border-radius: 5px; 
-    margin-left: 15px;
+    margin-left: 50px;
 }
 
 .select_report {
-    margin-left: 15px;
+    margin-left: 50px;
     width:200px;
     border: 1px solid rgba(13, 62, 114, 0.2);
     border-radius: 5px;
+}
+.button_submit_form {
+    background-color:rgb(6, 58, 122);
+    margin-top: 25px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    border: none;
+    margin-left: 35%;
+}
+
+.button_submit_form:hover{
+    background-color: rgb(2, 26, 56);
+}
+.attention {
+    color: red; 
+    font-size: 14px;
+    font-style: italic;
 }
