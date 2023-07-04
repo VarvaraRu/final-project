@@ -1,7 +1,7 @@
 import './login.css'; 
-import { Link } from 'react-router-dom'
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from '../../context/AuthProvider'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useRef, useState, useEffect } from 'react';
+import useAuth from '../../hooks/useAuth'
 
 import axios from '../../api/axios'
 const LOGIN_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in'
@@ -11,14 +11,18 @@ const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"
 
 
 export const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
+
+    const navigate = useNavigate(); 
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef(); 
     const errRef = useRef(); 
 
     const [email, setEmail] = useState(''); 
     const [pwd, setPwd] = useState(''); 
     const [errMsg, setErrMsg] = useState(''); 
-    const [success, setSuccess] = useState(false);
 
     const [validPwd, setValidPwd] = useState(false); 
     const [pwdFocus, setPwdFocus] = useState(false); 
@@ -59,7 +63,7 @@ export const Login = () => {
             setAuth({email, pwd, token, user});
             setEmail('');
             setPwd('');
-            setSuccess(true);
+            navigate(from, {replace: true});
         } catch (err) {
             if(!err?.response){
                 setErrMsg('Сервер не отвечает')
@@ -71,13 +75,6 @@ export const Login = () => {
     }
 
     return (
-        <>
-        {success ? (
-            <div className='success_submit_form'>
-                <h1>Вы успешно вошли в аккаунт</h1>
-                <Link to='/'>Перейти на главную страницу</Link>
-            </div>
-        ) : (
         <div className='wrapper_for_login_form'>
             <div className='login_form'>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
@@ -133,7 +130,5 @@ export const Login = () => {
                     <p className='text_with_link'>Нет аккаунта? <Link to='/register'>Создать</Link></p>
             </div>
         </div>
-        )}
-        </>
     )
 }
