@@ -126,7 +126,7 @@ export const Login = () => {
                         От 8 и до 20 символов.
                     </p>
 
-                    <button className="button_in_login_form" disabled={!validPwd || !validEmail ? true : false}><span className='text_in_button'>Войти</span></button>
+                    <button type="submit" className="button_in_login_form" disabled={!validPwd || !validEmail ? true : false}><span className='text_in_button'>Войти</span></button>
                     </form>
                     <p className='text_with_link'>Нет аккаунта? <Link to='/register'>Создать</Link></p>
             </div>

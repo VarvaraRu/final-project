@@ -1,15 +1,14 @@
 import './register.css'
 import { Link } from 'react-router-dom'
 import { useRef, useState, useEffect } from 'react'
-import axios from '../../api/axios';
 
+import axios from '../../api/axios';
+const REGISTER_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up'
+const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 const USER_REGEX = /^[?!,.а-яА-ЯёЁ0-9\s]{2,20}$/; 
 const PWD_REGEX = /^[A-z][A-z0-9-_]{7,20}$/; 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-
-const REGISTER_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up'
-const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 export const Register = () => {
     const userRef = useRef();
@@ -180,7 +179,7 @@ export const Register = () => {
                     <p className={lastNameFocus && lastName && !validLastName ? "instructions" : "offscreen"}>
                         От 2 до 20 символов. Только кириллица. 
                     </p>
-                <button className="button_in_register_form" disabled={!validName || !validPwd || !validEmail ? true : false}><span className='text_in_button'>Создать аккаунт</span></button>
+                <button type="submit" className="button_in_register_form" disabled={!validName || !validPwd || !validEmail ? true : false}><span className='text_in_button'>Создать аккаунт</span></button>
                 </form>
               
                 {/* <label class="checkbox_in_register_form"><input type="checkbox" value="yes" className="checkbox1"></input>Одобрен</label> */}

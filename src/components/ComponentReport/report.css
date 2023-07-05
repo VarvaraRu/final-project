@@ -1,12 +1,12 @@
 .wrapper_for_report_form {
-    height: 80vh;       
+    height: 78vh;       
 }
 
 .report_form {
     width: 1000px;
     height: 650px;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: 16px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 4px rgba(12, 39, 66, 0.2);
     display: flex;
@@ -64,4 +64,31 @@
     color: red; 
     font-size: 14px;
     font-style: italic;
+}
+.success_submit_form{
+    height: 80vh;   
+    text-align: center;
+}
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+.instructions {
+    color: red;
+}
+.hide {
+    display: none;
+}
+.valid {
+    margin-left: 10px;
+}
+.invalid {
+    margin-left: 10px;
+}
+.errmsg{
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
 }

@@ -1,10 +1,11 @@
 import './report.css'
 import Select from 'react-select'
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from '../../api/axios'
 const REPORT_URL = 'https://sf-final-project-be.herokuapp.com/api/public/report'
+const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 const typeOptions = [
     {value: 'General', label: 'General'},
@@ -28,9 +29,10 @@ const colorOptions = [
 
 const NAME_REGEX = /^[?!,.а-яА-ЯёЁ0-9\s]{2,50}$/; 
 const LICENSE_REGEX = /^[A-Za-z0-9]{12}$/;
-const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 export const Report = () => {
+    const errRef = useRef(); 
+    const nameRef = useRef(); 
 
     // Обязательные пункты 
     const [license, setLicense] = useState('')
@@ -55,10 +57,6 @@ export const Report = () => {
     const [success, setSuccess] = useState(false); 
 
     useEffect(() => {
-        setErrMsg(''); 
-    }, [name, license, typeBicycle])
-
-    useEffect(() => {
         const result = NAME_REGEX.test(name); 
         setValidName(result); 
     }, [name])
@@ -74,9 +72,13 @@ export const Report = () => {
         }
     }, [typeBicycle])
 
+    useEffect(() => {
+        setErrMsg(''); 
+    }, [name, license, typeBicycle])
 
     const handleSubmit = async (e) => {
         e.prevent.Default(); 
+
         try {
             const response = await axios.post(REPORT_URL,
                 JSON.stringify({clientId: clientId, ownerFullName: name, licenseNumber: license, type: typeBicycle, color: color, date: date, description: addedInfo}), 
@@ -105,6 +107,7 @@ export const Report = () => {
     ) : (
         <div className='wrapper_for_report_form'>
             <div className='report_form'>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
                 <h1>Cообщить о краже</h1>
                 <form onSubmit={handleSubmit} className='submit_form'>
                     
@@ -116,6 +119,7 @@ export const Report = () => {
                         className='input_in_report_form' 
                         placeholder='введите ФИО'
                         type='text'
+                        ref={nameRef}
                         id='name'
                         onChange={(e) => setName(e.target.value)}
                         value={name}
@@ -140,8 +144,8 @@ export const Report = () => {
                         onChange={(e) => setLicense(e.target.value)}
                         value={license}
                         required
-                        onFocus={() => setBicycleTypeFocus(true)}
-                        onBlur={() => setBicycleTypeFocus(false)}
+                        onFocus={() => setLicenseFocus(true)}
+                        onBlur={() => setLicenseFocus(false)}
                         ></input>
                     </label>
                     <p className={licenseFocus && license && !validLicense ? "instructions" : "offscreen"}>
@@ -154,6 +158,7 @@ export const Report = () => {
                             className='input_in_report_form'
                             type='date'
                             onChange={(e) => setDate(e.target.value)}
+                            value={date}
                         ></input>
                     </label>
 
@@ -169,8 +174,8 @@ export const Report = () => {
                         value={typeBicycle}
                         onChange={(e) => setBicycleType(e)}
                         required
-                        onFocus={() => setLicenseFocus(true)}
-                        onBlur={() => setLicenseFocus(false)}
+                        onFocus={() => setBicycleTypeFocus(true)}
+                        onBlur={() => setBicycleTypeFocus(false)}
                         />
                     </label>
                     <p className={typeBicycleFocus && typeBicycle && !validTypeBicycle ? "instructions" : "offscreen"}>
@@ -183,6 +188,7 @@ export const Report = () => {
                             placeholder='выберите' 
                             options={colorOptions}
                             onChange={(e) => setColor(e)}
+                            value={color}
                             />
                     </label>
 
@@ -193,6 +199,7 @@ export const Report = () => {
                             cols="50"
                             placeholder='введите комментарий'
                             onChange={(e) => setAddedInfo(e)}
+                            value={addedInfo}
                         ></textarea>
                     </label>
                     
@@ -200,12 +207,11 @@ export const Report = () => {
                     <span className='attention'>Поля, помеченные * обязательны для заполнения</span>
                     <br/>
 
-                    <button className='button_submit_form' disabled={!validName || !validLicense || !validTypeBicycle  ? true : false}><span className='text_in_button'>Отправить</span></button>
+                    <button type="submit" className='button_submit_form' disabled={!validName || !validLicense || !validTypeBicycle ? true : false}><span className='text_in_button'>Отправить</span></button>
                 </form>
             </div>
         </div>
         )}
         </>
     )
-
 }
