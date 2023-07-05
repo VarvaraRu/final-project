@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth'
 import axios from '../../api/axios'
 const LOGIN_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_in'
 
-const PWD_REGEX = /^[A-z][A-z0-9-_]{7,20}$/; 
+const PWD_REGEX = /^[а-яА-ЯёЁa-zA-Z0-9]{7,20}$/; 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 
 

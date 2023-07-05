@@ -7,7 +7,7 @@ const REGISTER_URL = 'https://sf-final-project-be.herokuapp.com/api/auth/sign_up
 const clientId = '938f3e05-8d84-47c9-8f88-49f663a78bfc'
 
 const USER_REGEX = /^[?!,.а-яА-ЯёЁ0-9\s]{2,20}$/; 
-const PWD_REGEX = /^[A-z][A-z0-9-_]{7,20}$/; 
+const PWD_REGEX = /^[а-яА-ЯёЁa-zA-Z0-9]{7,20}$/; 
 const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 
 export const Register = () => {
